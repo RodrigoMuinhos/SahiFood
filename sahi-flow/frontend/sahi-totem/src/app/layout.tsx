@@ -2,8 +2,13 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SA'HI - Comida com Afeto",
-  description: "Sistema de autoatendimento SA'HI",
+  title: "SA´HI - FOOD STREET",
+  description: "Sistema de autoatendimento SA´HI - FOOD STREET",
+  icons: {
+    icon: "/logo/mono-logo.png",
+    shortcut: "/logo/mono-logo.png",
+    apple: "/logo/mono-logo.png",
+  },
 };
 
 export default function RootLayout({

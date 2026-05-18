@@ -50,15 +50,13 @@ export default function ScreensaverPage() {
       <div className="relative z-10 flex h-full flex-col items-center justify-between px-8 py-14">
         {/* Brand */}
         <div className="text-center">
-          <p className="text-xs font-bold uppercase tracking-[0.55em] text-[#d29a35]">
-            Bem-vindo ao
-          </p>
-          <h1 className="mt-1 text-8xl font-black uppercase tracking-tight text-[#f8edd8] drop-shadow-2xl">
-            SA&apos;HI
-          </h1>
-          <p className="mt-2 text-lg tracking-widest text-[#d3c5ad]">
-            Comida com Afeto
-          </p>
+          <div className="flex justify-center">
+            <img
+              src="/logo/sahi-logo.png"
+              alt="Logo SA´HI"
+              className="h-[26rem] w-[26rem] object-contain drop-shadow-2xl md:h-[34rem] md:w-[34rem]"
+            />
+          </div>
         </div>
 
         {/* Current product highlight */}

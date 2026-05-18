@@ -221,14 +221,16 @@ export default function MenuPage() {
     <div className="flex h-screen overflow-hidden bg-[#090807] text-[#f8edd8]">
       {/* SIDEBAR FIXA */}
       <aside className="hidden h-full w-[260px] flex-none border-r border-[#2a2018] bg-[#100d09] lg:flex lg:flex-col">
-        <div className="border-b border-[#2a2018] px-5 py-5">
-          <Link href="/" className="inline-flex flex-col leading-none">
-            <span className="text-xs font-black uppercase tracking-[0.45em] text-[#d29a35]">
-              SA&#39;HI
-            </span>
-            <span className="mt-1 text-[11px] tracking-wide text-[#9d8f77]">
-              Menu principal
-            </span>
+        <div className="flex h-[180px] items-center justify-center border-b border-[#2a2018] px-5 py-4">
+          <Link
+            href="/"
+            className="inline-flex w-full items-center justify-center overflow-hidden leading-none"
+          >
+            <img
+              src="/logo/sahi-hor.png"
+              alt="Logo SA´HI"
+              className="h-20 w-[13.5rem] scale-[3.2] object-contain"
+            />
           </Link>
         </div>
 

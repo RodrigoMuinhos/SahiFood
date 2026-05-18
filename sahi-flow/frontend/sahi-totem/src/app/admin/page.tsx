@@ -10,9 +10,15 @@ export default function AdminPage() {
           <Link href="/menu">
             <ArrowLeft className="w-6 h-6 hover:opacity-75 transition-opacity cursor-pointer" />
           </Link>
-          <div>
-            <h1 className="text-3xl font-bold">ADM</h1>
-            <p className="text-apple-gray-400">Acesso interno do SA'HI</p>
+          <div className="flex items-center gap-3">
+            <img
+              src="/logo/sahi-logo.png"
+              alt="Logo SA´HI"
+              className="h-12 w-12 object-contain"
+            />
+            <div>
+              <h1 className="text-3xl font-bold">ADM</h1>
+            </div>
           </div>
         </div>
       </div>
@@ -56,8 +62,8 @@ export default function AdminPage() {
         </div>
 
         <div className="mt-10 rounded-2xl border border-apple-gray-700 bg-apple-gray-800 p-5 text-sm text-apple-gray-400">
-          Dica: a home pública do SA'HI agora abre direto no cardápio do
-          cliente.
+          Dica: a home pública do SA´HI - FOOD STREET agora abre direto no
+          cardápio do cliente.
         </div>
       </div>
     </div>

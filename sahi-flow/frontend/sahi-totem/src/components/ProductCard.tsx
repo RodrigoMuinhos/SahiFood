@@ -39,9 +39,11 @@ export default function ProductCard({ product }: Props) {
         </div>
         <div className="absolute inset-x-0 bottom-0 p-6">
           <div className="max-w-[80%] rounded-[28px] border border-white/10 bg-black/35 p-5 backdrop-blur-sm">
-            <p className="text-xs uppercase tracking-[0.28em] text-white/65">
-              SAHI FOOD
-            </p>
+            <img
+              src="/logo/sahi-logo.png"
+              alt="Logo SA´HI"
+              className="h-10 w-10 object-contain"
+            />
             <h3 className="mt-2 text-3xl font-black uppercase leading-none text-[#fff4df] md:text-4xl">
               {product.name}
             </h3>

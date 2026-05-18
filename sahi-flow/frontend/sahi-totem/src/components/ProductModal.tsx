@@ -142,19 +142,19 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
 
       {/* Sheet */}
       <div
-        className="relative w-full max-w-2xl max-h-[94vh] overflow-y-auto rounded-t-[36px] bg-[#15110d] border border-[#4a3b1f] shadow-[0_-20px_60px_rgba(0,0,0,0.5)] animate-slide-up"
+        className="relative flex h-[92vh] w-full max-w-3xl flex-col overflow-hidden rounded-t-[42px] border border-[#4a3b1f] bg-[#15110d] shadow-[0_-24px_70px_rgba(0,0,0,0.55)] animate-slide-up"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Image */}
-        <div className="relative h-72 overflow-hidden rounded-t-[36px] flex-none">
+        <div className="relative h-[38vh] min-h-[280px] overflow-hidden flex-none">
           {product.imageUrl ? (
             <img
               src={product.imageUrl}
               alt={product.name}
-              className="w-full h-full object-cover"
+              className="h-full w-full object-cover"
             />
           ) : (
-            <div className="w-full h-full bg-[#221b15] flex items-center justify-center text-[#9d8f77] text-lg">
+            <div className="flex h-full w-full items-center justify-center bg-[#221b15] text-lg text-[#9d8f77]">
               Sem foto
             </div>
           )}
@@ -163,136 +163,147 @@ export default function ProductModal({ product, onClose }: ProductModalProps) {
           {/* Close */}
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 w-10 h-10 rounded-full bg-black/60 flex items-center justify-center text-white hover:bg-black/80 transition active:scale-95"
+            className="absolute right-4 top-4 flex h-11 w-11 items-center justify-center rounded-full bg-black/60 text-white transition hover:bg-black/80 active:scale-95"
           >
-            <X className="w-5 h-5" />
+            <X className="h-5 w-5" />
           </button>
 
           {/* Prep time */}
           {product.preparationTimeMinutes > 0 && (
-            <div className="absolute bottom-4 left-4 flex items-center gap-1.5 bg-black/65 rounded-full px-3 py-1.5 text-sm text-[#f8edd8]">
-              <Clock className="w-3.5 h-3.5 text-[#d29a35]" />
+            <div className="absolute bottom-4 left-4 flex items-center gap-1.5 rounded-full bg-black/65 px-3 py-1.5 text-sm text-[#f8edd8]">
+              <Clock className="h-3.5 w-3.5 text-[#d29a35]" />
               <span>{product.preparationTimeMinutes} min</span>
             </div>
           )}
 
           {/* Feito na hora */}
           {product.hasRecipe && (
-            <div className="absolute bottom-4 right-4 bg-[#d29a35]/90 rounded-full px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-[#17120f]">
+            <div className="absolute bottom-4 right-4 rounded-full bg-[#d29a35]/90 px-3 py-1.5 text-xs font-bold uppercase tracking-wider text-[#17120f]">
               Preparado na hora
             </div>
           )}
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-5">
-          {/* Name & price */}
-          <div className="flex items-start justify-between gap-4">
-            <h2 className="text-2xl font-black uppercase text-[#f8edd8] leading-tight md:text-3xl">
-              {product.name}
-            </h2>
-            <p className="whitespace-nowrap rounded-xl bg-[#d29a35] px-3 py-1 text-2xl font-black text-[#17120f] md:text-3xl">
-              {product.price === 0
-                ? "Grátis"
-                : `R$ ${product.price.toFixed(2).replace(".", ",")}`}
-            </p>
-          </div>
-
-          {/* Description */}
-          {product.description && (
-            <p className="text-[#d3c5ad] leading-relaxed text-base">
-              {product.description}
-            </p>
-          )}
-
-          <div className="grid gap-3 md:grid-cols-3">
-            <div className="rounded-2xl border border-[#4a3b1f] bg-[#1a140f] p-3">
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#9d8f77]">
-                O que vem
-              </p>
-              <p className="mt-2 text-sm text-[#f8edd8]">
-                {details.base.join(" • ")}
+        <div className="flex-1 overflow-y-auto px-6 py-5">
+          <div className="space-y-5 pb-36">
+            {/* Name & price */}
+            <div className="flex items-start justify-between gap-4">
+              <h2 className="text-2xl font-black uppercase leading-tight text-[#f8edd8] md:text-3xl">
+                {product.name}
+              </h2>
+              <p className="whitespace-nowrap rounded-xl bg-[#d29a35] px-4 py-2 text-2xl font-black leading-none text-[#17120f] md:text-3xl">
+                {product.price === 0
+                  ? "Grátis"
+                  : `R$ ${product.price.toFixed(2).replace(".", ",")}`}
               </p>
             </div>
 
-            <div className="rounded-2xl border border-[#4a3b1f] bg-[#1a140f] p-3">
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#9d8f77]">
-                Molhos
+            {/* Description */}
+            {product.description && (
+              <p className="text-base leading-relaxed text-[#d3c5ad]">
+                {product.description}
               </p>
-              <p className="mt-2 text-sm text-[#f8edd8]">
-                {details.molhos.join(" • ")}
-              </p>
+            )}
+
+            <div className="grid gap-3 md:grid-cols-3">
+              <div className="rounded-2xl border border-[#4a3b1f] bg-[#1a140f] p-3">
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#9d8f77]">
+                  O que vem
+                </p>
+                <p className="mt-2 text-sm text-[#f8edd8]">
+                  {details.base.join(" • ")}
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-[#4a3b1f] bg-[#1a140f] p-3">
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#9d8f77]">
+                  Molhos
+                </p>
+                <p className="mt-2 text-sm text-[#f8edd8]">
+                  {details.molhos.join(" • ")}
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-[#4a3b1f] bg-[#1a140f] p-3">
+                <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#9d8f77]">
+                  Complementos
+                </p>
+                <p className="mt-2 text-sm text-[#f8edd8]">
+                  {details.extras.join(" • ")}
+                </p>
+              </div>
             </div>
 
-            <div className="rounded-2xl border border-[#4a3b1f] bg-[#1a140f] p-3">
-              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-[#9d8f77]">
-                Complementos
-              </p>
-              <p className="mt-2 text-sm text-[#f8edd8]">
-                {details.extras.join(" • ")}
-              </p>
+            <div className="rounded-xl border border-[#3f2f1a] bg-[#14100c] px-4 py-3 text-sm text-[#d3c5ad]">
+              <span className="font-bold text-[#d29a35]">Dica:</span>{" "}
+              {details.perfil}.
+            </div>
+
+            {/* Allergens */}
+            {product.allergens && product.allergens.length > 0 && (
+              <div className="rounded-2xl border border-[#4a3b1f] bg-[#1a140f] p-4">
+                <AllergenList allergens={product.allergens} size="md" />
+              </div>
+            )}
+
+            {/* Notes */}
+            <div>
+              <label className="mb-2 block text-xs font-bold uppercase tracking-widest text-[#9d8f77]">
+                Observação do pedido
+              </label>
+              <textarea
+                value={notes}
+                onChange={(e) => setNotes(e.target.value)}
+                placeholder="Ex: sem cebola, molho à parte..."
+                className="w-full resize-none rounded-xl border border-[#4a3b1f] bg-[#1a140f] px-4 py-3 text-base text-[#f8edd8] placeholder:text-[#5a4d3a] focus:border-[#d29a35] focus:outline-none"
+                rows={2}
+              />
             </div>
           </div>
+        </div>
 
-          <div className="rounded-xl border border-[#3f2f1a] bg-[#14100c] px-4 py-3 text-sm text-[#d3c5ad]">
-            <span className="font-bold text-[#d29a35]">Dica:</span>{" "}
-            {details.perfil}.
-          </div>
-
-          {/* Allergens */}
-          {product.allergens && product.allergens.length > 0 && (
-            <div className="rounded-2xl border border-[#4a3b1f] bg-[#1a140f] p-4">
-              <AllergenList allergens={product.allergens} size="md" />
-            </div>
-          )}
-
-          {/* Notes */}
-          <div>
-            <label className="block text-xs font-bold uppercase tracking-widest text-[#9d8f77] mb-2">
-              Observação do pedido
-            </label>
-            <textarea
-              value={notes}
-              onChange={(e) => setNotes(e.target.value)}
-              placeholder="Ex: sem cebola, molho à parte..."
-              className="w-full bg-[#1a140f] border border-[#4a3b1f] rounded-xl px-4 py-3 text-[#f8edd8] placeholder-[#5a4d3a] focus:outline-none focus:border-[#d29a35] resize-none text-base"
-              rows={2}
-            />
-          </div>
-
-          {/* Quantity + Add */}
-          <div className="flex items-center gap-3 pb-2">
-            <div className="flex items-center gap-2 rounded-xl border border-[#4a3b1f] bg-[#1a140f] px-3 py-2">
-              <button
-                onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                className="w-9 h-9 rounded-full bg-[#24190f] flex items-center justify-center text-[#f8edd8] hover:bg-[#2d2010] transition active:scale-95"
-              >
-                <Minus className="w-4 h-4" />
-              </button>
-              <span className="text-xl font-black text-[#f8edd8] w-8 text-center">
-                {quantity}
-              </span>
-              <button
-                onClick={() => setQuantity(quantity + 1)}
-                className="w-9 h-9 rounded-full bg-[#24190f] flex items-center justify-center text-[#f8edd8] hover:bg-[#2d2010] transition active:scale-95"
-              >
-                <Plus className="w-4 h-4" />
-              </button>
+        {/* Footer */}
+        <div className="flex-none border-t border-[#4a3b1f] bg-[#14100c] px-5 py-5 pb-6">
+          <div className="flex items-end gap-3">
+            <div className="min-w-[132px] rounded-2xl border border-[#4a3b1f] bg-[#1a140f] px-3 py-3">
+              <p className="text-[10px] font-bold uppercase tracking-[0.18em] text-[#9d8f77]">
+                Quantidade
+              </p>
+              <div className="mt-2 flex items-center justify-between gap-2">
+                <button
+                  onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-[#24190f] text-[#f8edd8] transition hover:bg-[#2d2010] active:scale-95"
+                >
+                  <Minus className="h-4 w-4" />
+                </button>
+                <span className="w-8 text-center text-xl font-black text-[#f8edd8]">
+                  {quantity}
+                </span>
+                <button
+                  onClick={() => setQuantity(quantity + 1)}
+                  className="flex h-10 w-10 items-center justify-center rounded-full bg-[#24190f] text-[#f8edd8] transition hover:bg-[#2d2010] active:scale-95"
+                >
+                  <Plus className="h-4 w-4" />
+                </button>
+              </div>
             </div>
 
             <button
               onClick={handleAdd}
               disabled={added}
-              className={`flex-1 flex items-center justify-center gap-2 rounded-xl px-5 py-4 text-base font-black uppercase tracking-wider transition active:scale-[0.98] ${
+              className={`flex min-h-[72px] flex-1 items-center justify-center gap-3 rounded-2xl px-5 text-base font-black uppercase tracking-wider transition active:scale-[0.98] ${
                 added
                   ? "bg-[#4a8a5a] text-white"
                   : "bg-[#d29a35] text-[#17120f] hover:brightness-110"
               }`}
             >
-              <ShoppingCart className="w-5 h-5" />
-              {added
-                ? "Adicionado!"
-                : `Adicionar · R$ ${(product.price * quantity).toFixed(2).replace(".", ",")}`}
+              <ShoppingCart className="h-5 w-5" />
+              <span className="text-left leading-tight">
+                {added
+                  ? "Adicionado!"
+                  : `Adicionar · R$ ${(product.price * quantity).toFixed(2).replace(".", ",")}`}
+              </span>
             </button>
           </div>
         </div>
