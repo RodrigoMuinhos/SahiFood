@@ -151,10 +151,18 @@ export default function CartPage() {
 
   useEffect(() => {
     if (typeof window === "undefined") return;
+
+    // Sync name from keyboard page if available
+    const savedName = sessionStorage.getItem("customerName");
+    if (savedName && savedName.trim()) {
+      setCustomerName(savedName);
+      sessionStorage.removeItem("customerName");
+    }
+
     setKeyboardUrl(
       new URL("/cart/keyboard", window.location.origin).toString(),
     );
-  }, []);
+  }, [setCustomerName]);
 
   useEffect(() => {
     if (orderType !== "DELIVERY") return;

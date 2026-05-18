@@ -39,19 +39,19 @@ export default function VirtualKeyboard({
   };
 
   const keyClass = compact
-    ? "min-h-[42px] rounded-xl px-3 text-sm"
-    : "min-h-[52px] rounded-2xl px-4 text-base";
+    ? "min-h-[48px] rounded-xl px-3 text-sm"
+    : "min-h-[72px] rounded-2xl px-5 text-lg";
 
   return (
-    <div className="space-y-2.5">
+    <div className="space-y-3">
       {KEY_ROWS.map((row, rowIndex) => (
-        <div key={rowIndex} className="flex flex-wrap justify-center gap-2">
+        <div key={rowIndex} className="flex flex-wrap justify-center gap-3">
           {row.map((key) => (
             <button
               key={key}
               type="button"
               onClick={() => appendKey(key)}
-              className={`min-w-[40px] border border-[#4a3b1f] bg-[#1a140f] font-black uppercase text-[#f8edd8] transition hover:bg-[#241a12] active:scale-95 ${keyClass}`}
+              className={`min-w-[50px] border-2 border-[#4a3b1f] bg-[#1a140f] font-black uppercase text-[#f8edd8] transition hover:bg-[#241a12] hover:border-[#d29a35] active:scale-95 ${keyClass}`}
             >
               {key}
             </button>
@@ -59,25 +59,25 @@ export default function VirtualKeyboard({
         </div>
       ))}
 
-      <div className="flex flex-wrap justify-center gap-2 pt-1">
+      <div className="flex flex-wrap justify-center gap-3 pt-2">
         <button
           type="button"
           onClick={clearAll}
-          className={`border border-[#4a3b1f] bg-[#1a140f] font-black uppercase text-[#d29a35] transition hover:bg-[#241a12] active:scale-95 ${keyClass}`}
+          className={`border-2 border-[#4a3b1f] bg-[#1a140f] font-black uppercase text-[#d29a35] transition hover:bg-[#241a12] hover:border-[#d29a35] active:scale-95 ${keyClass}`}
         >
           Limpar
         </button>
         <button
           type="button"
           onClick={addSpace}
-          className={`min-w-[160px] border border-[#4a3b1f] bg-[#1a140f] font-black uppercase text-[#f8edd8] transition hover:bg-[#241a12] active:scale-95 ${keyClass}`}
+          className={`min-w-[200px] border-2 border-[#4a3b1f] bg-[#1a140f] font-black uppercase text-[#f8edd8] transition hover:bg-[#241a12] hover:border-[#d29a35] active:scale-95 ${keyClass}`}
         >
           Espaço
         </button>
         <button
           type="button"
           onClick={removeLast}
-          className={`border border-[#4a3b1f] bg-[#1a140f] font-black uppercase text-[#d29a35] transition hover:bg-[#241a12] active:scale-95 ${keyClass}`}
+          className={`border-2 border-[#4a3b1f] bg-[#1a140f] font-black uppercase text-[#d29a35] transition hover:bg-[#241a12] hover:border-[#d29a35] active:scale-95 ${keyClass}`}
         >
           Apagar
         </button>

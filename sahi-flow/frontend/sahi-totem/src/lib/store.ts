@@ -10,6 +10,7 @@ export interface CartItem {
 interface CartStore {
   items: CartItem[];
   customerName: string;
+  lastUpdate: number;
   setCustomerName: (name: string) => void;
   addItem: (product: Product, quantity: number, notes?: string) => void;
   removeItem: (productId: string) => void;
@@ -22,6 +23,7 @@ interface CartStore {
 export const useCart = create<CartStore>((set, get) => ({
   items: [],
   customerName: "",
+  lastUpdate: 0,
   setCustomerName: (name: string) => set({ customerName: name }),
 
   addItem: (product: Product, quantity: number, notes?: string) => {
@@ -37,11 +39,13 @@ export const useCart = create<CartStore>((set, get) => ({
               ? { ...item, quantity: item.quantity + quantity }
               : item,
           ),
+          lastUpdate: Date.now(),
         };
       }
 
       return {
         items: [...state.items, { product, quantity, notes }],
+        lastUpdate: Date.now(),
       };
     });
   },
@@ -49,6 +53,7 @@ export const useCart = create<CartStore>((set, get) => ({
   removeItem: (productId: string) => {
     set((state) => ({
       items: state.items.filter((item) => item.product.id !== productId),
+      lastUpdate: Date.now(),
     }));
   },
 
@@ -57,11 +62,12 @@ export const useCart = create<CartStore>((set, get) => ({
       items: state.items.map((item) =>
         item.product.id === productId ? { ...item, quantity } : item,
       ),
+      lastUpdate: Date.now(),
     }));
   },
 
   clearCart: () => {
-    set({ items: [] });
+    set({ items: [], lastUpdate: Date.now() });
   },
 
   getSubtotal: () => {

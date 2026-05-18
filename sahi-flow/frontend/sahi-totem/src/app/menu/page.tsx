@@ -229,7 +229,7 @@ export default function MenuPage() {
             <img
               src="/logo/sahi-hor.png"
               alt="Logo SA´HI"
-              className="h-20 w-[13.5rem] scale-[3.2] object-contain"
+              className="h-20 w-[13.5rem] scale-[6.4] object-contain"
             />
           </Link>
         </div>
