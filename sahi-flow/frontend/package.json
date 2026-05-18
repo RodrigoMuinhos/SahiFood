@@ -1,0 +1,12 @@
+{
+  "name": "sahi-frontend",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "cd sahi-totem && npm run dev",
+    "build": "cd sahi-totem && npm run build",
+    "start": "cd sahi-totem && npm run start",
+    "kill-ports": "npx kill-port 3000 3001 8080 8081",
+    "fresh": "npx kill-port 3000 3001 8080 8081 && cd sahi-totem && npm run dev"
+  }
+}
